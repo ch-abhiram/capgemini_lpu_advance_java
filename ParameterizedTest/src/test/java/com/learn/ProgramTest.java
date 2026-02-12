@@ -29,7 +29,7 @@ public class ProgramTest {
 //		int actualres = p.add(a, b);
 //		assertEquals(expectedResult, actualres);
 //	}
-	
+	//parameterized test
 	@ParameterizedTest
 	@CsvFileSource(resources = "/capgemini.csv",numLinesToSkip = 1)
 	public void evenorodd(String input,String expected) {
@@ -37,6 +37,7 @@ public class ProgramTest {
 		int num = Integer.parseInt(input);
 		String actualres = obj.evenOrOdd(num);
 		assertEquals(expected,actualres);
+		
 	}
-
+	
 }
