@@ -35,7 +35,7 @@ public class StudentDaoTest {
         dao.close();
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testSaveStudent() {
@@ -51,7 +51,7 @@ public class StudentDaoTest {
         assertNotNull(saved);
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testFindStudentById_NotFound() {
@@ -59,7 +59,7 @@ public class StudentDaoTest {
         assertNull(s);
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testFindAllStudents() {
@@ -75,7 +75,7 @@ public class StudentDaoTest {
         assertTrue(list.size() > 0);
     }
 
-    // ----------------------------------------------------
+   
 
     @Test
     void testUpdateStudent_Name() {
@@ -94,7 +94,7 @@ public class StudentDaoTest {
         assertEquals("New", updated.getName());
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testUpdateStudent_Email() {
@@ -113,7 +113,7 @@ public class StudentDaoTest {
         assertEquals("new@mail.com", updated.getEmail());
     }
 
-    // ----------------------------------------------------
+   
 
     @Test
     void testUpdateStudent_Marks() {
@@ -132,7 +132,7 @@ public class StudentDaoTest {
         assertEquals(95.0, updated.getMarks());
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testUpdateStudent_InvalidChoice() {
@@ -151,7 +151,7 @@ public class StudentDaoTest {
         assertEquals("User", unchanged.getName());
     }
 
-    // ----------------------------------------------------
+   
 
     @Test
     void testUpdateStudent_NotFound() {
@@ -160,7 +160,7 @@ public class StudentDaoTest {
         assertNull(s);
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testDeleteStudent() {
@@ -179,7 +179,7 @@ public class StudentDaoTest {
         assertNull(deleted);
     }
 
-    // ----------------------------------------------------
+    
 
     @Test
     void testDeleteStudent_NotFound() {
@@ -188,11 +188,11 @@ public class StudentDaoTest {
         assertNull(s);
     }
 
-    // ----------------------------------------------------
+   
 
     @Test
     void testClose() {
         dao.close();
-        assertTrue(true); // just ensures method executes
+        assertTrue(true); 
     }
 }
