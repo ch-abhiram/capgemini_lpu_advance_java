@@ -15,6 +15,12 @@ public class Car {
 	@OneToOne
 	private Engine engine;
 	
+	public Engine getEngine() {
+		return engine;
+	}
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
 	public int getId() {
 		return id;
 	}

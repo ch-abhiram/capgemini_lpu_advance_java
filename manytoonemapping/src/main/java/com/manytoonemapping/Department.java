@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Department {
 	@Id
-	@GeneratedValue(strategy = GenerationType)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String manager_name;
