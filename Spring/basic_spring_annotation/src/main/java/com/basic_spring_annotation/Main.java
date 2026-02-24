@@ -8,8 +8,12 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationContext ioc = new AnnotationConfigApplicationContext(DemoConfiguration.class);
 		
-		ioc.getBean(Employee.class);
+		Employee emp = ioc.getBean(Employee.class);
+		System.out.println(emp);
 		
+		Person p = ioc.getBean(Person.class);
+		System.out.println(p.getMobile());
+		System.out.println(p.getScan());
 		
 	}
 }
