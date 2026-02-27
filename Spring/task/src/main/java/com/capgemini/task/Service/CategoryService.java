@@ -34,6 +34,13 @@ public class CategoryService {
 		jpa.delete(obj);
 	}
 	
+	public Category updateCategory(Long id, Category updateCategory) {
+		Category category = getCategoryById(id);
+		category.setCategoryName(updateCategory.getCategoryName());
+        category.setDescription(updateCategory.getDescription());
+        return jpa.save(category);
+	}
+	
 	
 	
 	
