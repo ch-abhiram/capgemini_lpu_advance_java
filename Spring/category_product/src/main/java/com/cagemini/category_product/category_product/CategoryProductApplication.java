@@ -1,0 +1,26 @@
+package com.cagemini.category_product.category_product;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+@OpenAPIDefinition(
+info = @Info(
+title = "Product Service API",
+version = "1.0",
+description = "API documentation for Product Service"
+)
+)
+@SpringBootApplication
+public class CategoryProductApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CategoryProductApplication.class, args);
+	}
+	
+
+}
