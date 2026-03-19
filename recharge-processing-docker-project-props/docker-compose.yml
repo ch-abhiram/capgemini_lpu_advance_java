@@ -1,0 +1,92 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - micro-net
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - micro-net
+
+  config-server:
+    build: ./config-server
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./config-repo:/config-repo
+    networks:
+      - micro-net
+
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    depends_on:
+      - config-server
+    ports:
+      - "8761:8761"
+    networks:
+      - micro-net
+
+  recharge-service:
+    build: ./recharge-service
+    container_name: recharge-service
+    depends_on:
+      - postgres
+      - rabbitmq
+      - config-server
+      - eureka-server
+    ports:
+      - "8081:8081"
+    networks:
+      - micro-net
+
+  processing-service:
+    build: ./processing-service
+    container_name: processing-service
+    depends_on:
+      - postgres
+      - rabbitmq
+      - config-server
+      - eureka-server
+    ports:
+      - "8082:8082"
+    networks:
+      - micro-net
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - config-server
+      - eureka-server
+      - recharge-service
+      - processing-service
+    ports:
+      - "9090:9090"
+    networks:
+      - micro-net
+
+networks:
+  micro-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
